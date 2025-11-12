@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Net.WebSockets;
 using WebSockets;
 using WebSockets.WsServer;
+using WS.Extension.Client.Models;
 //using WS.Extension.Client;
 //using WS.Extension.Listener.Models;
 
@@ -27,6 +28,8 @@ namespace Casino.Chat.Web
 
             builder.Services.AddDbContext<ChatDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString(nameof(ChatDbContext))));
             builder.Services.AddScoped<IChatService, ChatService>();
+
+            builder.Services.Configure<WsClientOptions>(builder.Configuration.GetSection(nameof(WsClientOptions)));
 
             builder.Services.AddSingleton<WebSockets.WebSocketManager>();
 

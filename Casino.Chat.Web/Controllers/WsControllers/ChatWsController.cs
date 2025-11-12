@@ -12,13 +12,13 @@ using WS.Extension.Client.Models;
 
 namespace Casino.Chat.Web.Controllers.WsControllers
 {
-    public class ChatWsController : WsController
+    public class ChatWsController : WebSockets.WsController
     {
         private IChatService _chatService;
         private WebSockets.WebSocketManager _webSocketManager;
         IOptions<WsClientOptions> _options;
 
-        public ChatWsController(IChatService chatService, WebSockets.WebSocketManager webSocketManager, WsClient wsClient, IOptions<WsClientOptions> options)
+        public ChatWsController(IChatService chatService, WebSockets.WebSocketManager webSocketManager, IOptions<WsClientOptions> options)
         {
             _chatService = chatService;
             _webSocketManager = webSocketManager;
